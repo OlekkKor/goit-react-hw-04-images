@@ -1,0 +1,41 @@
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
+import css from './Modal.module.css';
+
+
+
+export const Modal = ({ onImageClick , largeImgUrl }) => {
+  useEffect( () => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        onImageClick('');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onImageClick])
+
+  const handleBackdrop = event => {
+    if (event.target === event.currentTarget) {
+      this.props.onImageClick('');
+    }
+  };
+  
+
+
+  
+  
+    return (
+      <div className={css.background} onClick={handleBackdrop}>
+        <div className={css.modal}>
+          <img src={largeImgUrl} alt="" />
+        </div>
+      </div>
+    );
+}
+
+
+Modal.propTypes = {
+  onImageClick: PropTypes.func,
+};
