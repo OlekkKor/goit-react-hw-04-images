@@ -18,7 +18,7 @@ export const Modal = ({ onImageClick , largeImgUrl }) => {
 
   const handleBackdrop = event => {
     if (event.target === event.currentTarget) {
-      this.props.onImageClick('');
+      onImageClick('');
     }
   };
   
